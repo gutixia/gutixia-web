@@ -1,0 +1,29 @@
+# ── Gutix IA — Netlify Configuration ──
+
+[build]
+  publish = "."
+
+# Redirigir /gracias a gracias.html
+[[redirects]]
+  from = "/gracias"
+  to   = "/gracias.html"
+  status = 200
+
+# Headers de seguridad y caché
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection       = "1; mode=block"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+
+# HTML: sin caché (siempre la versión más nueva)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Notificaciones del formulario al correo
+[build.environment]
+  NODE_VERSION = "18"
