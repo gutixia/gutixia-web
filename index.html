@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="root">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -422,6 +422,41 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
     .reveal.visible{opacity:1;transform:none}
 
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 3px;
+      margin-right: 8px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--electric);
+      color: var(--white);
+      box-shadow: 0 0 12px rgba(43,78,255,0.4);
+    }
+    .lang-btn:not(.active):hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+
     /* RESPONSIVE */
     @media(max-width:960px){
       nav{padding:0 20px}
@@ -457,12 +492,16 @@
     <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIxMjYgMjc1IDEwMzUgMjkwIj48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjYwLjQzOSAyODAuOTI5QzI2OC45IDI3OS45MzIgMjkxLjI1MiAyODAuNTY4IDMwMC44OTEgMjgwLjU3MUwzODEuODcyIDI4MC41NTFDMzU4LjI4NSAzMDMuNDM1IDMzMi40NzkgMzI1LjczIDMxMi4zMSAzNTEuOTYyQzI4NC44NzcgMzUxLjk0NCAyNTYuMjg0IDM0OC42OSAyMzIuNDE2IDM2My4wMDZDMjE2LjM5NSAzNzIuNzQzIDIwNC44MzQgMzg4LjM3OSAyMDAuMjE5IDQwNi41NTFDMTk1LjQzNiA0MjUuNzU3IDE5OC45OTMgNDQ0LjE3OSAyMDkuMDM0IDQ2MC45ODNDMjEwLjMxIDQ2Mi43IDIxMC44MjEgNDYzLjEyMSAyMTEuMjU2IDQ2NS4xNDJDMjEwLjE2NiA0NjYuNzUgMTk4LjM2NiA0NzcuNTQzIDE5Ni4xMTcgNDc5LjY3MkMxODUuMDQ5IDQ5MC4wNzMgMTc0LjEyOCA1MDAuNjI5IDE2My4zNTUgNTExLjMzN0MxNDIuOTY2IDQ5MS42OCAxMjguOTU2IDQ1Ny40OTUgMTI2Ljk3MSA0MjkuNDE3QzEyNC44MzIgMzk0LjI1NiAxMzYuNzI4IDM1OS42ODMgMTYwLjA0OCAzMzMuMjg1QzE4NS40MDYgMzA0LjA2MiAyMjEuNDc0IDI4My42MTggMjYwLjQzOSAyODAuOTI5WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik01MTYuMjM0IDMyOS4wNTlDNTU5Ljg3IDMyNi45NTggNTk5Ljk3IDM0Ny4xNDUgNjA5LjE3MiAzOTIuNTg1QzYwMS42NyAzOTMuNzMyIDU5NC4yNjcgMzk0LjQ2NSA1ODYuNjk5IDM5NS43NTZDNTgxLjM1OSAzNjYuNTYgNTU1LjIzNSAzNTAuNzExIDUyNy4yNjcgMzQ4LjkxQzQzNS4yODIgMzQyLjk4NiA0MjUuNjUyIDQ4MS41NDEgNTIwLjIyMyA0ODIuNTI1QzU1Ni4xMzUgNDgyLjg5OSA1ODcuOTE0IDQ3MS4zNDMgNTg4LjQ5NiA0MjkuMzQ2TDU0OC40MzggNDI5LjMzMkw1MjMuMjE2IDQyOS4zMzdMNTIzLjIyMSA0MDkuNDEyTDYxMC4yMDQgNDA5LjUxNEM2MDkuNzEzIDQzOS44NDEgNjEwLjE2OSA0NzEuNTY2IDYxMC4wODYgNTAyLjA0MUw1ODkuMTc5IDUwMi4xNjRMNTg5LjI3NSA0NzIuMjQ5QzU4NC45OCA0NzguMzI2IDU4MS4xMzIgNDgzLjQ1IDU3NC45OTggNDg3Ljk2NkM1NDEuMDU0IDUxMi45NTcgNDkwLjQ5NiA1MDguNTMyIDQ1OS4wMDQgNDgxLjcxNUM0MjMuOTAyIDQ1MS44MjQgNDIwLjk3MiAzOTMuNjk5IDQ1MS4xNDEgMzU5LjQ5M0M0NjguMTQzIDM0MC4xMTEgNDkwLjg2NyAzMzAuOTcgNTE2LjIzNCAzMjkuMDU5WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yODUuODI3IDQxNi4zMzRMMzUyLjUyMiA0MTYuMjc1TDM1Mi40NzcgNTUyLjU4TDI4Ni4yNjkgNTUyLjYxOEMyODYuMzg0IDUwNy4xOSAyODYuMjM2IDQ2MS43NjEgMjg1LjgyNyA0MTYuMzM0WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik03MzkuMjgyIDM3Ni4xNDNMNzYxLjY4MyAzNzYuMTlMNzYxLjkwMSA0MjMuNUw3NjEuOTgyIDUwMi4zMDZDNzUzLjk4NSA1MDIuMDQzIDc0NS43NjYgNTAyLjEzMiA3MzcuNzQ5IDUwMi4xMjZMNzM4LjQ0NyA0NzQuODlDNzM1Ljc3OSA0ODAuNTcyIDczMy41NDIgNDg0LjkzMSA3MjkuMDUyIDQ4OS41NjVDNzEwLjg0NSA1MDguMzYxIDY3MC4zNjggNTEwLjI2MyA2NTEuNjgyIDQ5MS41MTFDNjM0LjU5MiA0NzQuMzYgNjM3LjQ2MyA0NDIuOTQxIDYzNy40NDUgNDIwLjQ3MUw2MzcuNDgzIDM3Ni40Nkw2NTkuOTk2IDM3Ni4zOTdDNjYwLjIyNyAzOTguMjMyIDY2MC4yMjkgNDIwLjA2OCA2NjAuMDAxIDQ0MS45MDNDNjU5LjgyMiA0NjUuNTM2IDY2NS4zMzkgNDg0LjYzNCA2OTMuMDQ0IDQ4NC40MDdDNzEzLjgzOCA0ODQuMjM3IDczNC4wMTIgNDc1LjkyIDczOC4xNDQgNDUzLjMzOUM3NDAuMDg3IDQ0Mi43MjMgNzM5LjQwOSA0MzEuNDkyIDczOS4zODcgNDIwLjY3OEw3MzkuMjgyIDM3Ni4xNDNaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTk1NC42MTggMzc2LjI4M0M5NjMuNDk1IDM3Ni4xNDUgOTcyLjgxOCAzNzYuMjk4IDk4MS43MjcgMzc2LjMwOEM5OTIuNjI0IDM5MS4wOTcgMTAwNy4yNiA0MDguNTc5IDEwMTguODggNDIzLjI3NUMxMDI4LjAxIDQxMS4zOTIgMTA0Ni4xMyAzODYuNDEgMTA1NS43OSAzNzYuMzI5TDEwODIuNDIgMzc2LjI0M0MxMDc1LjQzIDM4NS4zMjggMTA2Ni42OSAzOTUuMTQ5IDEwNTkuMzUgNDA0LjIxQzEwNTEuMTUgNDE0LjM0IDEwNDEuNzYgNDI2LjcyIDEwMzMuMDggNDM2LjE0MUMxMDM4Ljg2IDQ0My4zMSAxMDgyLjYgNDk3LjMyNCAxMDg0LjA5IDUwMS42MzhDMTA4Mi4wNiA1MDIuMzk2IDEwNzkgNTAyLjEwNSAxMDc2LjcyIDUwMi4wNjVMMTA1Ny44OCA1MDIuMDg4QzEwNDQuOTIgNDg0Ljk3NiAxMDMwLjk2IDQ2OC4zMzQgMTAxOC40NSA0NTAuOTg2QzEwMTYuOTQgNDUyLjc1NCAxMDE1LjMzIDQ1NC43ODEgMTAxMy45MSA0NTYuNjM5QzEwMDIuMjQgNDcxLjk3NSA5ODkuNjYxIDQ4Ni44MzUgOTc4LjMxMiA1MDIuMzk0Qzk2OS40NjkgNTAxLjk2OSA5NjAuNTkzIDUwMS45OTcgOTUxLjczOSA1MDEuOTUzQzk1NS40MzggNDk2LjQ0NiA5NjIuMDM2IDQ4OC40NyA5NjYuMjUyIDQ4Mi45NUM5NzguMjggNDY3LjE2OSA5OTAuNjYxIDQ1MS42NjEgMTAwMy4zOSA0MzYuNDM4Qzk4Ny4yODMgNDE2LjQzIDk3MC4zNzYgMzk2LjQ4IDk1NC42MTggMzc2LjI4M1oiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNODMxLjEyMSAzMzcuNDUxTDgzMS41NjcgMzM3Ljc1NkM4MzIuNDU5IDMzOS4wNjQgODMyLjA5NiAzNzEuNiA4MzIuMDkzIDM3Ni4yMTFMODg0LjUwNiAzNzYuMjA0TDg4NC41OTYgMzkzLjc2Nkw4MzIuMTcyIDM5My43NDRDODMxLjczIDQwOC40ODQgODMxLjkwMyA0MjQuMDI0IDgzMi4wOTIgNDM4Ljg1N0M4MzIuMjg1IDQ1My45NSA4MjYuOTE0IDQ4MC45MDYgODQ3LjIyMSA0ODQuNDc1Qzg2MS45NjYgNDg3LjA2NiA4NzQuMDY4IDQ4MC4wMDIgODg1LjY0NCA0NzIuMTYyQzg4NS4wNjYgNDc4Ljg1MyA4ODUuMDggNDg1LjQgODg1LjAxOSA0OTIuMTA1Qzg4NC45NzMgNDkzLjIyOCA4ODUuMDQ3IDQ5NC41MTggODgzLjk3OCA0OTUuMjVDODY3LjA4MiA1MDYuNzY0IDgzNy4wOCA1MDguODg2IDgyMS43MzYgNDkzLjc1MUM4MDcuMDExIDQ3OS4yMjYgODA5LjYzMSA0NTYuNTkxIDgwOS42MDIgNDM3LjUwOUw4MDkuNDYyIDM5My44MjVDNzk5LjA1NCAzOTMuNzIyIDc4OC42NDYgMzkzLjcwNCA3NzguMjM4IDM5My43NzFMNzc4LjMxMiAzNzYuMjc2TDgwOS41NzIgMzc2LjIxOEw4MDkuNjg0IDM1MC40NDlDODE2LjQzNSAzNDYuMDgxIDgyNC4xODEgMzQxLjYzNSA4MzEuMTIxIDMzNy40NTFaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMi4xODEgNDc5LjM4M0MyMzQuOTMzIDQ3OC41NjggMjU0LjIxMSA0NzkuMTY3IDI2Ny40MTIgNDc5LjE3NkwyNjcuNDMgNTUzLjI3NEMyNTQuMDAzIDU1Mi44MTYgMjQ0LjQzNCA1NTEuNTMzIDIzMS40MDMgNTQ4LjQyOUMyMDguOTMgNTQyLjIyMyAyMDAuNzM2IDUzNy4zMDcgMTgxLjM1IDUyNC41OUMxOTQuMzU5IDUxMC4xOTMgMjA4LjgyOCA0OTMuMDA4IDIyMi4xODEgNDc5LjM4M1oiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNOTEwLjk4MSAzNzYuMjcxTDkzMy42NjEgMzc2LjIxNUw5MzMuNzUzIDUwMi4xOUM5MjYuMTk5IDUwMi4wNzMgOTE4LjY0NSA1MDIuMDM1IDkxMS4wOTEgNTAyLjA3NEw5MTAuOTgxIDM3Ni4yNzFaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTkxOS45NCAzMzAuMDMxQzkyOC4yMSAzMjguNjc4IDkzNi4wMTcgMzM0LjI2NyA5MzcuNDA0IDM0Mi41MzJDOTM4Ljc5MSAzNTAuNzk4IDkzMy4yMzYgMzU4LjYyOSA5MjQuOTc3IDM2MC4wNUM5MTYuNjcxIDM2MS40OCA5MDguNzg1IDM1NS44ODQgOTA3LjM5IDM0Ny41N0M5MDUuOTk1IDMzOS4yNTYgOTExLjYyMiAzMzEuMzkyIDkxOS45NCAzMzAuMDMxWiIvPjxwYXRoIGZpbGw9IiMwMDFERUUiIGQ9Ik0xMTMxLjI1IDM3NS4xNzJDMTEzMS45NSAzNzUuMTcyIDExMzYuNjggMzc0Ljg5IDExMzcuMDQgMzc1LjU3M0MxMTQwLjM4IDM4MS45IDExNDIuNTkgMzg4Ljg3IDExNDUuNTUgMzk1LjM5M0MxMTQ2LjczIDM5OC4yNzMgMTE1MC41NyA0MDUuNTM5IDExNTEuMDggNDA4LjEzM0MxMTUxLjI5IDQwOS4xOSAxMTQ1LjEyIDQxMC43MTggMTE0NC4yOSA0MDUuMDY2QzExNDMuNzYgNDAxLjQ1MyAxMTQyLjY5IDM5OS44MiAxMTM4LjkxIDM5OS45NzhMMTEyNy4yMyA0MDBDMTEyNC4wNyA0MDYuMzUgMTEyNC45NyA0MDkuNzU3IDExMTguMDkgNDA4LjYwMkMxMTE4LjEgNDA4LjYwMyAxMTE3Ljc2IDQwOC41MDkgMTExNy44IDQwOC40MTFDMTEyMS41OCAzOTcuMzM4IDExMjYuOTIgMzg2LjE4MiAxMTMxLjI1IDM3NS4xNzJaIi8+PHBhdGggZmlsbD0iIzBhMTYyOCIgZD0iTTExMzMuOTMgMzgxLjY4OEMxMTM1LjgyIDM4My4zOTYgMTEzOS4wNCAzOTIuNjIgMTE0MC4zNCAzOTUuMzEyQzExNDAuNzYgMzk2LjE4NiAxMTM3LjQ4IDM5Ni4wOTEgMTEzNy4yOSAzOTYuMDk4TDExMzYuOTIgMzk2LjExNEMxMTMzLjk5IDM5Ni4wNjggMTEzMS40OSAzOTYuMDEgMTEyOC41NSAzOTUuODJDMTEzMC4zNCAzOTEuMDMzIDExMzIuMTcgMzg2LjUxOSAxMTMzLjkzIDM4MS42ODhaIi8+PHBhdGggZmlsbD0iIzAwMURFRSIgZD0iTTExMDcuNTEgMzc1LjQ2OEMxMTA4Ljc4IDM3NS40ODIgMTExMS43MyAzNzUuMDc4IDExMTIuNzYgMzc1Ljg2NUMxMTEzLjcgMzc2LjU4MyAxMTEyLjYyIDQwNC42NDIgMTExMi41NiA0MDguNDI1QzExMTEuNjIgNDA4LjUyNiAxMTA3LjgyIDQwOS4wMjkgMTEwNy43OCA0MDguMzY5QzExMDcuMyA0MDAuOTMzIDExMDcuNTIgMzgxLjk4OCAxMTA3LjUxIDM3NS40NjhaIi8+PC9zdmc+" alt="Gutix IA" />
   </a>
   <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#servicios" data-i18n="nav.services" data-i18n="nav.services">Servicios</a></li>
+    <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+    <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
   </ul>
-  <a href="#contacto" class="nav-cta">Empezar ahora →</a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+  <a href="#contacto" class="nav-cta" data-i18n="nav.cta">Empezar ahora →</a>
   <button class="nav-mobile-btn" aria-label="Menú" onclick="toggleMobileMenu()">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
       <path d="M3 6h16M3 11h16M3 16h16" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
@@ -473,10 +512,10 @@
 <!-- MOBILE MENU -->
 <div id="mobile-menu" style="display:none;position:fixed;top:68px;left:0;right:0;z-index:199;background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:20px 24px 28px;">
   <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
-    <li><a href="#servicios" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);">Servicios</a></li>
-    <li><a href="#proceso" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);">Proceso</a></li>
-    <li><a href="#faq" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);">FAQ</a></li>
-    <li><a href="#contacto" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);">Contacto</a></li>
+    <li><a href="#servicios" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);" data-i18n="nav.services" data-i18n="nav.services">Servicios</a></li>
+    <li><a href="#proceso" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);" data-i18n="nav.process">Proceso</a></li>
+    <li><a href="#faq" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);" data-i18n="nav.faq">FAQ</a></li>
+    <li><a href="#contacto" onclick="closeMobile()" style="display:block;padding:12px 4px;font-size:16px;font-weight:500;color:var(--muted2);" data-i18n="nav.contact">Contacto</a></li>
   </ul>
   <a href="#contacto" onclick="closeMobile()" style="display:block;margin-top:16px;background:var(--electric);color:white;padding:13px 24px;border-radius:8px;font-weight:700;text-align:center;">Empezar ahora →</a>
 </div>
@@ -491,16 +530,16 @@
 
   <div class="hero-badge">
     <span class="badge-dot"></span>
-    Agencia de Inteligencia Artificial
+    <span data-i18n="hero.badge">Agencia de Inteligencia Artificial</span>
   </div>
 
-  <h1>Tu empresa, potenciada<br/><span class="grad">con IA que funciona.</span></h1>
+  <h1><span data-i18n="hero.h1a">Tu empresa, potenciada</span><br/><span class="grad" data-i18n="hero.h1b">con IA que funciona.</span></h1>
 
-  <p class="hero-sub">Diseñamos, construimos e implementamos soluciones de IA que generan resultados reales y medibles para tu negocio.</p>
+  <p class="hero-sub" data-i18n="hero.sub">Diseñamos, construimos e implementamos soluciones de IA que generan resultados reales y medibles para tu negocio.</p>
 
   <div class="hero-btns">
-    <a href="#contacto" class="btn-primary">Contáctanos →</a>
-    <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    <a href="#contacto" class="btn-primary" data-i18n="hero.cta1">Contáctanos →</a>
+    <a href="#servicios" class="btn-ghost" data-i18n="hero.cta2">Ver servicios</a>
   </div>
 
   <div class="ticker-wrap">
@@ -524,9 +563,9 @@
 <!-- NÚMEROS -->
 <div class="numbers-wrap reveal">
   <div class="numbers-grid">
-    <div class="num-item"><div class="num-big">10x</div><div class="num-lbl">Velocidad en procesos</div></div>
-    <div class="num-item"><div class="num-big">−60%</div><div class="num-lbl">Reducción de costos</div></div>
-    <div class="num-item"><div class="num-big">24/7</div><div class="num-lbl">Sistemas que no duermen</div></div>
+    <div class="num-item"><div class="num-big">10x</div><div class="num-lbl" data-i18n="nums.n1">Velocidad en procesos</div></div>
+    <div class="num-item"><div class="num-big">−60%</div><div class="num-lbl" data-i18n="nums.n2">Reducción de costos</div></div>
+    <div class="num-item"><div class="num-big">24/7</div><div class="num-lbl" data-i18n="nums.n3">Sistemas que no duermen</div></div>
   </div>
 </div>
 
@@ -534,34 +573,34 @@
 <section class="section" id="servicios">
   <div class="container">
     <div class="reveal">
-      <div class="s-tag">Lo que hacemos</div>
-      <h2 class="s-h2">Soluciones de IA<br/>a la medida de tu empresa</h2>
-      <p class="s-p">No vendemos software genérico. Cada solución se diseña desde cero para tu operación.</p>
+      <div class="s-tag" data-i18n="svc.tag">Lo que hacemos</div>
+      <h2 class="s-h2"><span data-i18n="svc.h2a">Soluciones de IA</span><br/><span data-i18n="svc.h2b">a la medida de tu empresa</span></h2>
+      <p class="s-p" data-i18n="svc.sub">No vendemos software genérico. Cada solución se diseña desde cero para tu operación.</p>
     </div>
     <div class="svc-bento reveal">
       <div class="svc">
         <div class="svc-glow"></div>
         <div class="svc-num">01</div>
         <span class="svc-icon">🧠</span>
-        <h3>Sistemas a medida con IA</h3>
-        <p>Desde modelos predictivos hasta agentes autónomos, construimos sistemas diseñados para los retos reales de tu empresa.</p>
-        <a href="#contacto" class="svc-link">Conversemos →</a>
+        <h3 data-i18n="svc.s1.title">Sistemas a medida con IA</h3>
+        <p data-i18n="svc.s1.desc">Desde modelos predictivos hasta agentes autónomos, construimos sistemas diseñados para los retos reales de tu empresa.</p>
+        <a href="#contacto" class="svc-link" data-i18n="svc.link">Conversemos →</a>
       </div>
       <div class="svc">
         <div class="svc-glow"></div>
         <div class="svc-num">02</div>
         <span class="svc-icon">⚙️</span>
-        <h3>Automatización de procesos</h3>
-        <p>Identificamos las tareas que consumen tu tiempo y las automatizamos. Tu equipo se libera para lo que realmente importa.</p>
-        <a href="#contacto" class="svc-link">Conversemos →</a>
+        <h3 data-i18n="svc.s2.title">Automatización de procesos</h3>
+        <p data-i18n="svc.s2.desc">Identificamos las tareas que consumen tu tiempo y las automatizamos. Tu equipo se libera para lo que realmente importa.</p>
+        <a href="#contacto" class="svc-link" data-i18n="svc.link">Conversemos →</a>
       </div>
       <div class="svc">
         <div class="svc-glow"></div>
         <div class="svc-num">03</div>
         <span class="svc-icon">💡</span>
-        <h3>Consultoría IA</h3>
-        <p>Identificamos las oportunidades reales de IA en tu empresa, las priorizamos y ejecutamos con el menor riesgo posible.</p>
-        <a href="#contacto" class="svc-link">Conversemos →</a>
+        <h3 data-i18n="svc.s3.title">Consultoría IA</h3>
+        <p data-i18n="svc.s3.desc">Identificamos las oportunidades reales de IA en tu empresa, las priorizamos y ejecutamos con el menor riesgo posible.</p>
+        <a href="#contacto" class="svc-link" data-i18n="svc.link">Conversemos →</a>
       </div>
     </div>
   </div>
@@ -571,33 +610,33 @@
 <section class="section" id="proceso">
   <div class="container">
     <div class="reveal" style="text-align:center">
-      <div class="s-tag">Cómo trabajamos</div>
-      <h2 class="s-h2">De la idea al resultado</h2>
-      <p class="s-p" style="margin:14px auto 0">Un proceso claro, sin sorpresas, con objetivos medibles en cada etapa.</p>
+      <div class="s-tag" data-i18n="proc.tag">Cómo trabajamos</div>
+      <h2 class="s-h2" data-i18n="proc.h2">De la idea al resultado</h2>
+      <p class="s-p" style="margin:14px auto 0" data-i18n="proc.sub">Un proceso claro, sin sorpresas, con objetivos medibles en cada etapa.</p>
     </div>
     <div class="proceso-grid reveal">
       <div class="paso">
         <div class="paso-arrow">→</div>
         <div class="paso-num">01</div>
-        <h4>Diagnóstico</h4>
-        <p>Analizamos tu operación e identificamos dónde la IA genera el mayor impacto.</p>
+        <h4 data-i18n="proc.p1.title">Diagnóstico</h4>
+        <p data-i18n="proc.p1.desc">Analizamos tu operación e identificamos dónde la IA genera el mayor impacto.</p>
       </div>
       <div class="paso">
         <div class="paso-arrow">→</div>
         <div class="paso-num">02</div>
-        <h4>Diseño</h4>
-        <p>Construimos una propuesta a medida con objetivos y plazos claros.</p>
+        <h4 data-i18n="proc.p2.title">Diseño</h4>
+        <p data-i18n="proc.p2.desc">Construimos una propuesta a medida con objetivos y plazos claros.</p>
       </div>
       <div class="paso">
         <div class="paso-arrow">→</div>
         <div class="paso-num">03</div>
-        <h4>Implementación</h4>
-        <p>Desarrollamos e integramos la solución en tu stack sin interrumpir la operación.</p>
+        <h4 data-i18n="proc.p3.title">Implementación</h4>
+        <p data-i18n="proc.p3.desc">Desarrollamos e integramos la solución en tu stack sin interrumpir la operación.</p>
       </div>
       <div class="paso">
         <div class="paso-num">04</div>
-        <h4>Optimización</h4>
-        <p>Monitoreamos y mejoramos el sistema continuamente junto a tu equipo.</p>
+        <h4 data-i18n="proc.p4.title">Optimización</h4>
+        <p data-i18n="proc.p4.desc">Monitoreamos y mejoramos el sistema continuamente junto a tu equipo.</p>
       </div>
     </div>
   </div>
@@ -609,36 +648,36 @@
     <div class="porque-grid">
       <div>
         <div class="reveal">
-          <div class="s-tag">Por qué Gutix IA</div>
-          <h2 class="s-h2">IA real para<br/>resultados reales</h2>
+          <div class="s-tag" data-i18n="why.tag">Por qué Gutix IA</div>
+          <h2 class="s-h2"><span data-i18n="why.h2a">IA real para</span><br/><span data-i18n="why.h2b">resultados reales</span></h2>
         </div>
         <div class="feat-list" style="margin-top:36px">
           <div class="feat reveal">
             <div class="feat-icon">🎯</div>
             <div>
-              <div class="feat-title">Foco en resultados, no en tecnología</div>
-              <div class="feat-desc">No usamos IA por moda. Cada implementación resuelve un problema concreto con métricas claras.</div>
+              <div class="feat-title" data-i18n="why.f1.title">Foco en resultados, no en tecnología</div>
+              <div class="feat-desc" data-i18n="why.f1.desc">No usamos IA por moda. Cada implementación resuelve un problema concreto con métricas claras.</div>
             </div>
           </div>
           <div class="feat reveal">
             <div class="feat-icon">🔧</div>
             <div>
-              <div class="feat-title">Implementación sin fricción</div>
-              <div class="feat-desc">Nos encargamos de todo el proceso. Tú defines el objetivo, nosotros lo hacemos realidad.</div>
+              <div class="feat-title" data-i18n="why.f2.title">Implementación sin fricción</div>
+              <div class="feat-desc" data-i18n="why.f2.desc">Nos encargamos de todo el proceso. Tú defines el objetivo, nosotros lo hacemos realidad.</div>
             </div>
           </div>
           <div class="feat reveal">
             <div class="feat-icon">🤝</div>
             <div>
-              <div class="feat-title">Soporte continuo incluido</div>
-              <div class="feat-desc">No desaparecemos al terminar. Monitoreamos y optimizamos cada sistema junto a tu equipo.</div>
+              <div class="feat-title" data-i18n="why.f3.title">Soporte continuo incluido</div>
+              <div class="feat-desc" data-i18n="why.f3.desc">No desaparecemos al terminar. Monitoreamos y optimizamos cada sistema junto a tu equipo.</div>
             </div>
           </div>
           <div class="feat reveal">
             <div class="feat-icon">🔒</div>
             <div>
-              <div class="feat-title">Seguridad y privacidad de datos</div>
-              <div class="feat-desc">Implementamos con buenas prácticas desde el inicio. Tus datos siempre protegidos.</div>
+              <div class="feat-title" data-i18n="why.f4.title">Seguridad y privacidad de datos</div>
+              <div class="feat-desc" data-i18n="why.f4.desc">Implementamos con buenas prácticas desde el inicio. Tus datos siempre protegidos.</div>
             </div>
           </div>
         </div>
@@ -672,45 +711,45 @@
 <section class="section" id="faq">
   <div class="container" style="max-width:780px">
     <div class="reveal" style="text-align:center;margin-bottom:52px">
-      <div class="s-tag">Preguntas frecuentes</div>
-      <h2 class="s-h2">¿Tienes dudas?</h2>
-      <p class="s-p" style="margin:14px auto 0">Lo que más nos preguntan antes de empezar.</p>
+      <div class="s-tag" data-i18n="faq.tag">Preguntas frecuentes</div>
+      <h2 class="s-h2" data-i18n="faq.h2">¿Tienes dudas?</h2>
+      <p class="s-p" style="margin:14px auto 0" data-i18n="faq.sub">Lo que más nos preguntan antes de empezar.</p>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
         <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>¿Necesito saber de tecnología o IA para trabajar con ustedes?</span>
+          <span data-i18n="faq.q1">¿Necesito saber de tecnología o IA para trabajar con ustedes?</span>
           <span class="faq-ico">+</span>
         </button>
-        <div class="faq-ans">Para nada. Nos encargamos de toda la parte técnica. Tú solo necesitas tener claro el problema que quieres resolver en tu negocio.</div>
+        <div class="faq-ans" data-i18n="faq.a1">Para nada. Nos encargamos de toda la parte técnica. Tú solo necesitas tener claro el problema que quieres resolver en tu negocio.</div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>¿Cuánto tiempo tarda una implementación?</span>
+          <span data-i18n="faq.q2">¿Cuánto tiempo tarda una implementación?</span>
           <span class="faq-ico">+</span>
         </button>
-        <div class="faq-ans">Depende del alcance, pero la mayoría de proyectos iniciales van de 2 a 6 semanas. Después del diagnóstico inicial te damos un cronograma exacto.</div>
+        <div class="faq-ans" data-i18n="faq.a2">Depende del alcance, pero la mayoría de proyectos iniciales van de 2 a 6 semanas. Después del diagnóstico inicial te damos un cronograma exacto.</div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>¿Funciona para empresas pequeñas o solo para grandes corporaciones?</span>
+          <span data-i18n="faq.q3">¿Funciona para empresas pequeñas o solo para grandes corporaciones?</span>
           <span class="faq-ico">+</span>
         </button>
-        <div class="faq-ans">Trabajamos con empresas de todos los tamaños. Las pymes suelen ver el mayor impacto porque tienen más margen de mejora en sus procesos.</div>
+        <div class="faq-ans" data-i18n="faq.a3">Trabajamos con empresas de todos los tamaños. Las pymes suelen ver el mayor impacto porque tienen más margen de mejora en sus procesos.</div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>¿Qué pasa si ya tengo software o sistemas instalados?</span>
+          <span data-i18n="faq.q4">¿Qué pasa si ya tengo software o sistemas instalados?</span>
           <span class="faq-ico">+</span>
         </button>
-        <div class="faq-ans">Lo integramos. Analizamos tu stack actual y construimos sobre lo que ya tienes, sin necesidad de reemplazar todo desde cero.</div>
+        <div class="faq-ans" data-i18n="faq.a4">Lo integramos. Analizamos tu stack actual y construimos sobre lo que ya tienes, sin necesidad de reemplazar todo desde cero.</div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="toggleFaq(this)">
-          <span>¿Qué tan segura es mi información?</span>
+          <span data-i18n="faq.q5">¿Qué tan segura es mi información?</span>
           <span class="faq-ico">+</span>
         </button>
-        <div class="faq-ans">Implementamos con buenas prácticas de seguridad en cada proyecto. Tus datos y los de tus clientes se manejan con privacidad y responsabilidad total.</div>
+        <div class="faq-ans" data-i18n="faq.a5">Implementamos con buenas prácticas de seguridad en cada proyecto. Tus datos y los de tus clientes se manejan con privacidad y responsabilidad total.</div>
       </div>
     </div>
   </div>
@@ -721,22 +760,28 @@
   <div class="container">
     <div class="cta-card reveal">
       <div class="cta-glow"></div>
-      <div class="s-tag" style="margin-bottom:18px">Contáctanos</div>
-      <h2>Cuéntanos tu proyecto</h2>
-      <p>Escríbenos y te respondemos en menos de 24 horas. Sin compromiso.</p>
-      <form class="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias">
+      <div class="s-tag" style="margin-bottom:18px" data-i18n="contact.tag">Contáctanos</div>
+      <h2 data-i18n="contact.h2">Cuéntanos tu proyecto</h2>
+      <p data-i18n="contact.sub">Escríbenos y te respondemos en menos de 24 horas. Sin compromiso.</p>
+      <form class="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias" onsubmit="formSubmit(event)">
         <input type="hidden" name="form-name" value="contacto" />
         <p style="display:none"><input name="bot-field" /></p>
         <div class="form-row">
-          <input type="text" name="nombre" placeholder="Tu nombre" class="form-input" required />
-          <input type="text" name="empresa" placeholder="Tu empresa" class="form-input" />
+          <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="contact.f.name" class="form-input" required />
+          <input type="text" name="empresa" placeholder="Tu empresa" data-i18n-placeholder="contact.f.company" class="form-input" />
         </div>
-        <input type="email" name="email" placeholder="tu@email.com" class="form-input" required />
-        <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" class="form-input" required></textarea>
-        <button type="submit" class="form-submit">Enviar mensaje →</button>
+        <input type="email" name="email" placeholder="tu@email.com" data-i18n-placeholder="contact.f.email" class="form-input" required />
+        <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" data-i18n-placeholder="contact.f.msg" class="form-input" required></textarea>
+        <button type="submit" class="form-submit" id="form-btn" data-i18n="contact.f.btn">Enviar mensaje →</button>
+        <div id="form-ok" style="display:none;margin-top:14px;padding:14px 18px;background:rgba(107,223,184,0.08);border:1px solid rgba(107,223,184,0.25);border-radius:10px;font-size:14px;color:#6BDFB8;text-align:center;">
+          ✓ ¡Mensaje enviado! Te respondemos en menos de 24 horas.
+        </div>
+        <div id="form-err" style="display:none;margin-top:14px;padding:14px 18px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);border-radius:10px;font-size:14px;color:#FF6B6B;text-align:center;">
+          Por favor completa nombre, email y mensaje.
+        </div>
       </form>
       <div class="contact-alt">
-        O escríbenos directo a <a href="mailto:hola@gutixia.com">hola@gutixia.com</a>
+        <span data-i18n="contact.alt">O escríbenos directo a</span> <a href="mailto:hola@gutixia.com">hola@gutixia.com</a>
       </div>
     </div>
   </div>
@@ -749,16 +794,16 @@
       <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIxMjYgMjc1IDEwMzUgMjkwIj48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjYwLjQzOSAyODAuOTI5QzI2OC45IDI3OS45MzIgMjkxLjI1MiAyODAuNTY4IDMwMC44OTEgMjgwLjU3MUwzODEuODcyIDI4MC41NTFDMzU4LjI4NSAzMDMuNDM1IDMzMi40NzkgMzI1LjczIDMxMi4zMSAzNTEuOTYyQzI4NC44NzcgMzUxLjk0NCAyNTYuMjg0IDM0OC42OSAyMzIuNDE2IDM2My4wMDZDMjE2LjM5NSAzNzIuNzQzIDIwNC44MzQgMzg4LjM3OSAyMDAuMjE5IDQwNi41NTFDMTk1LjQzNiA0MjUuNzU3IDE5OC45OTMgNDQ0LjE3OSAyMDkuMDM0IDQ2MC45ODNDMjEwLjMxIDQ2Mi43IDIxMC44MjEgNDYzLjEyMSAyMTEuMjU2IDQ2NS4xNDJDMjEwLjE2NiA0NjYuNzUgMTk4LjM2NiA0NzcuNTQzIDE5Ni4xMTcgNDc5LjY3MkMxODUuMDQ5IDQ5MC4wNzMgMTc0LjEyOCA1MDAuNjI5IDE2My4zNTUgNTExLjMzN0MxNDIuOTY2IDQ5MS42OCAxMjguOTU2IDQ1Ny40OTUgMTI2Ljk3MSA0MjkuNDE3QzEyNC44MzIgMzk0LjI1NiAxMzYuNzI4IDM1OS42ODMgMTYwLjA0OCAzMzMuMjg1QzE4NS40MDYgMzA0LjA2MiAyMjEuNDc0IDI4My42MTggMjYwLjQzOSAyODAuOTI5WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik01MTYuMjM0IDMyOS4wNTlDNTU5Ljg3IDMyNi45NTggNTk5Ljk3IDM0Ny4xNDUgNjA5LjE3MiAzOTIuNTg1QzYwMS42NyAzOTMuNzMyIDU5NC4yNjcgMzk0LjQ2NSA1ODYuNjk5IDM5NS43NTZDNTgxLjM1OSAzNjYuNTYgNTU1LjIzNSAzNTAuNzExIDUyNy4yNjcgMzQ4LjkxQzQzNS4yODIgMzQyLjk4NiA0MjUuNjUyIDQ4MS41NDEgNTIwLjIyMyA0ODIuNTI1QzU1Ni4xMzUgNDgyLjg5OSA1ODcuOTE0IDQ3MS4zNDMgNTg4LjQ5NiA0MjkuMzQ2TDU0OC40MzggNDI5LjMzMkw1MjMuMjE2IDQyOS4zMzdMNTIzLjIyMSA0MDkuNDEyTDYxMC4yMDQgNDA5LjUxNEM2MDkuNzEzIDQzOS44NDEgNjEwLjE2OSA0NzEuNTY2IDYxMC4wODYgNTAyLjA0MUw1ODkuMTc5IDUwMi4xNjRMNTg5LjI3NSA0NzIuMjQ5QzU4NC45OCA0NzguMzI2IDU4MS4xMzIgNDgzLjQ1IDU3NC45OTggNDg3Ljk2NkM1NDEuMDU0IDUxMi45NTcgNDkwLjQ5NiA1MDguNTMyIDQ1OS4wMDQgNDgxLjcxNUM0MjMuOTAyIDQ1MS44MjQgNDIwLjk3MiAzOTMuNjk5IDQ1MS4xNDEgMzU5LjQ5M0M0NjguMTQzIDM0MC4xMTEgNDkwLjg2NyAzMzAuOTcgNTE2LjIzNCAzMjkuMDU5WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yODUuODI3IDQxNi4zMzRMMzUyLjUyMiA0MTYuMjc1TDM1Mi40NzcgNTUyLjU4TDI4Ni4yNjkgNTUyLjYxOEMyODYuMzg0IDUwNy4xOSAyODYuMjM2IDQ2MS43NjEgMjg1LjgyNyA0MTYuMzM0WiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik03MzkuMjgyIDM3Ni4xNDNMNzYxLjY4MyAzNzYuMTlMNzYxLjkwMSA0MjMuNUw3NjEuOTgyIDUwMi4zMDZDNzUzLjk4NSA1MDIuMDQzIDc0NS43NjYgNTAyLjEzMiA3MzcuNzQ5IDUwMi4xMjZMNzM4LjQ0NyA0NzQuODlDNzM1Ljc3OSA0ODAuNTcyIDczMy41NDIgNDg0LjkzMSA3MjkuMDUyIDQ4OS41NjVDNzEwLjg0NSA1MDguMzYxIDY3MC4zNjggNTEwLjI2MyA2NTEuNjgyIDQ5MS41MTFDNjM0LjU5MiA0NzQuMzYgNjM3LjQ2MyA0NDIuOTQxIDYzNy40NDUgNDIwLjQ3MUw2MzcuNDgzIDM3Ni40Nkw2NTkuOTk2IDM3Ni4zOTdDNjYwLjIyNyAzOTguMjMyIDY2MC4yMjkgNDIwLjA2OCA2NjAuMDAxIDQ0MS45MDNDNjU5LjgyMiA0NjUuNTM2IDY2NS4zMzkgNDg0LjYzNCA2OTMuMDQ0IDQ4NC40MDdDNzEzLjgzOCA0ODQuMjM3IDczNC4wMTIgNDc1LjkyIDczOC4xNDQgNDUzLjMzOUM3NDAuMDg3IDQ0Mi43MjMgNzM5LjQwOSA0MzEuNDkyIDczOS4zODcgNDIwLjY3OEw3MzkuMjgyIDM3Ni4xNDNaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTk1NC42MTggMzc2LjI4M0M5NjMuNDk1IDM3Ni4xNDUgOTcyLjgxOCAzNzYuMjk4IDk4MS43MjcgMzc2LjMwOEM5OTIuNjI0IDM5MS4wOTcgMTAwNy4yNiA0MDguNTc5IDEwMTguODggNDIzLjI3NUMxMDI4LjAxIDQxMS4zOTIgMTA0Ni4xMyAzODYuNDEgMTA1NS43OSAzNzYuMzI5TDEwODIuNDIgMzc2LjI0M0MxMDc1LjQzIDM4NS4zMjggMTA2Ni42OSAzOTUuMTQ5IDEwNTkuMzUgNDA0LjIxQzEwNTEuMTUgNDE0LjM0IDEwNDEuNzYgNDI2LjcyIDEwMzMuMDggNDM2LjE0MUMxMDM4Ljg2IDQ0My4zMSAxMDgyLjYgNDk3LjMyNCAxMDg0LjA5IDUwMS42MzhDMTA4Mi4wNiA1MDIuMzk2IDEwNzkgNTAyLjEwNSAxMDc2LjcyIDUwMi4wNjVMMTA1Ny44OCA1MDIuMDg4QzEwNDQuOTIgNDg0Ljk3NiAxMDMwLjk2IDQ2OC4zMzQgMTAxOC40NSA0NTAuOTg2QzEwMTYuOTQgNDUyLjc1NCAxMDE1LjMzIDQ1NC43ODEgMTAxMy45MSA0NTYuNjM5QzEwMDIuMjQgNDcxLjk3NSA5ODkuNjYxIDQ4Ni44MzUgOTc4LjMxMiA1MDIuMzk0Qzk2OS40NjkgNTAxLjk2OSA5NjAuNTkzIDUwMS45OTcgOTUxLjczOSA1MDEuOTUzQzk1NS40MzggNDk2LjQ0NiA5NjIuMDM2IDQ4OC40NyA5NjYuMjUyIDQ4Mi45NUM5NzguMjggNDY3LjE2OSA5OTAuNjYxIDQ1MS42NjEgMTAwMy4zOSA0MzYuNDM4Qzk4Ny4yODMgNDE2LjQzIDk3MC4zNzYgMzk2LjQ4IDk1NC42MTggMzc2LjI4M1oiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNODMxLjEyMSAzMzcuNDUxTDgzMS41NjcgMzM3Ljc1NkM4MzIuNDU5IDMzOS4wNjQgODMyLjA5NiAzNzEuNiA4MzIuMDkzIDM3Ni4yMTFMODg0LjUwNiAzNzYuMjA0TDg4NC41OTYgMzkzLjc2Nkw4MzIuMTcyIDM5My43NDRDODMxLjczIDQwOC40ODQgODMxLjkwMyA0MjQuMDI0IDgzMi4wOTIgNDM4Ljg1N0M4MzIuMjg1IDQ1My45NSA4MjYuOTE0IDQ4MC45MDYgODQ3LjIyMSA0ODQuNDc1Qzg2MS45NjYgNDg3LjA2NiA4NzQuMDY4IDQ4MC4wMDIgODg1LjY0NCA0NzIuMTYyQzg4NS4wNjYgNDc4Ljg1MyA4ODUuMDggNDg1LjQgODg1LjAxOSA0OTIuMTA1Qzg4NC45NzMgNDkzLjIyOCA4ODUuMDQ3IDQ5NC41MTggODgzLjk3OCA0OTUuMjVDODY3LjA4MiA1MDYuNzY0IDgzNy4wOCA1MDguODg2IDgyMS43MzYgNDkzLjc1MUM4MDcuMDExIDQ3OS4yMjYgODA5LjYzMSA0NTYuNTkxIDgwOS42MDIgNDM3LjUwOUw4MDkuNDYyIDM5My44MjVDNzk5LjA1NCAzOTMuNzIyIDc4OC42NDYgMzkzLjcwNCA3NzguMjM4IDM5My43NzFMNzc4LjMxMiAzNzYuMjc2TDgwOS41NzIgMzc2LjIxOEw4MDkuNjg0IDM1MC40NDlDODE2LjQzNSAzNDYuMDgxIDgyNC4xODEgMzQxLjYzNSA4MzEuMTIxIDMzNy40NTFaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTIyMi4xODEgNDc5LjM4M0MyMzQuOTMzIDQ3OC41NjggMjU0LjIxMSA0NzkuMTY3IDI2Ny40MTIgNDc5LjE3NkwyNjcuNDMgNTUzLjI3NEMyNTQuMDAzIDU1Mi44MTYgMjQ0LjQzNCA1NTEuNTMzIDIzMS40MDMgNTQ4LjQyOUMyMDguOTMgNTQyLjIyMyAyMDAuNzM2IDUzNy4zMDcgMTgxLjM1IDUyNC41OUMxOTQuMzU5IDUxMC4xOTMgMjA4LjgyOCA0OTMuMDA4IDIyMi4xODEgNDc5LjM4M1oiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNOTEwLjk4MSAzNzYuMjcxTDkzMy42NjEgMzc2LjIxNUw5MzMuNzUzIDUwMi4xOUM5MjYuMTk5IDUwMi4wNzMgOTE4LjY0NSA1MDIuMDM1IDkxMS4wOTEgNTAyLjA3NEw5MTAuOTgxIDM3Ni4yNzFaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTkxOS45NCAzMzAuMDMxQzkyOC4yMSAzMjguNjc4IDkzNi4wMTcgMzM0LjI2NyA5MzcuNDA0IDM0Mi41MzJDOTM4Ljc5MSAzNTAuNzk4IDkzMy4yMzYgMzU4LjYyOSA5MjQuOTc3IDM2MC4wNUM5MTYuNjcxIDM2MS40OCA5MDguNzg1IDM1NS44ODQgOTA3LjM5IDM0Ny41N0M5MDUuOTk1IDMzOS4yNTYgOTExLjYyMiAzMzEuMzkyIDkxOS45NCAzMzAuMDMxWiIvPjxwYXRoIGZpbGw9IiMwMDFERUUiIGQ9Ik0xMTMxLjI1IDM3NS4xNzJDMTEzMS45NSAzNzUuMTcyIDExMzYuNjggMzc0Ljg5IDExMzcuMDQgMzc1LjU3M0MxMTQwLjM4IDM4MS45IDExNDIuNTkgMzg4Ljg3IDExNDUuNTUgMzk1LjM5M0MxMTQ2LjczIDM5OC4yNzMgMTE1MC41NyA0MDUuNTM5IDExNTEuMDggNDA4LjEzM0MxMTUxLjI5IDQwOS4xOSAxMTQ1LjEyIDQxMC43MTggMTE0NC4yOSA0MDUuMDY2QzExNDMuNzYgNDAxLjQ1MyAxMTQyLjY5IDM5OS44MiAxMTM4LjkxIDM5OS45NzhMMTEyNy4yMyA0MDBDMTEyNC4wNyA0MDYuMzUgMTEyNC45NyA0MDkuNzU3IDExMTguMDkgNDA4LjYwMkMxMTE4LjEgNDA4LjYwMyAxMTE3Ljc2IDQwOC41MDkgMTExNy44IDQwOC40MTFDMTEyMS41OCAzOTcuMzM4IDExMjYuOTIgMzg2LjE4MiAxMTMxLjI1IDM3NS4xNzJaIi8+PHBhdGggZmlsbD0iIzBhMTYyOCIgZD0iTTExMzMuOTMgMzgxLjY4OEMxMTM1LjgyIDM4My4zOTYgMTEzOS4wNCAzOTIuNjIgMTE0MC4zNCAzOTUuMzEyQzExNDAuNzYgMzk2LjE4NiAxMTM3LjQ4IDM5Ni4wOTEgMTEzNy4yOSAzOTYuMDk4TDExMzYuOTIgMzk2LjExNEMxMTMzLjk5IDM5Ni4wNjggMTEzMS40OSAzOTYuMDEgMTEyOC41NSAzOTUuODJDMTEzMC4zNCAzOTEuMDMzIDExMzIuMTcgMzg2LjUxOSAxMTMzLjkzIDM4MS42ODhaIi8+PHBhdGggZmlsbD0iIzAwMURFRSIgZD0iTTExMDcuNTEgMzc1LjQ2OEMxMTA4Ljc4IDM3NS40ODIgMTExMS43MyAzNzUuMDc4IDExMTIuNzYgMzc1Ljg2NUMxMTEzLjcgMzc2LjU4MyAxMTEyLjYyIDQwNC42NDIgMTExMi41NiA0MDguNDI1QzExMTEuNjIgNDA4LjUyNiAxMTA3LjgyIDQwOS4wMjkgMTEwNy43OCA0MDguMzY5QzExMDcuMyA0MDAuOTMzIDExMDcuNTIgMzgxLjk4OCAxMTA3LjUxIDM3NS40NjhaIi8+PC9zdmc+" alt="Gutix IA" style="height:28px;width:auto" />
     </div>
     <ul class="footer-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#servicios" data-i18n="nav.services" data-i18n="nav.services">Servicios</a></li>
+      <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
     </ul>
     <span class="footer-email">hola@gutixia.com</span>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Gutix IA · Todos los derechos reservados</span>
-    <span>Hecho con <span class="electric">IA</span> · gutixia.com</span>
+    <span data-i18n="footer.copy">© 2025 Gutix IA · Todos los derechos reservados</span>
+    
   </div>
 </footer>
 
@@ -819,6 +864,187 @@ const obs = new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+
+// ── i18n ──
+const translations = {
+  es: {
+    'nav.services':  'Servicios',
+    'nav.process':   'Proceso',
+    'nav.faq':       'FAQ',
+    'nav.contact':   'Contacto',
+    'nav.cta':       'Empezar ahora →',
+    'hero.badge':    'Agencia de Inteligencia Artificial',
+    'hero.h1a':      'Tu empresa, potenciada',
+    'hero.h1b':      'con IA que funciona.',
+    'hero.sub':      'Diseñamos, construimos e implementamos soluciones de IA que generan resultados reales y medibles para tu negocio.',
+    'hero.cta1':     'Contáctanos →',
+    'hero.cta2':     'Ver servicios',
+    'nums.n1':       'Velocidad en procesos',
+    'nums.n2':       'Reducción de costos',
+    'nums.n3':       'Sistemas que no duermen',
+    'svc.tag':       'Lo que hacemos',
+    'svc.h2a':       'Soluciones de IA',
+    'svc.h2b':       'a la medida de tu empresa',
+    'svc.sub':       'No vendemos software genérico. Cada solución se diseña desde cero para tu operación.',
+    'svc.s1.title':  'Sistemas a medida con IA',
+    'svc.s1.desc':   'Desde modelos predictivos hasta agentes autónomos, construimos sistemas diseñados para los retos reales de tu empresa.',
+    'svc.s2.title':  'Automatización de procesos',
+    'svc.s2.desc':   'Identificamos las tareas que consumen tu tiempo y las automatizamos. Tu equipo se libera para lo que realmente importa.',
+    'svc.s3.title':  'Consultoría IA',
+    'svc.s3.desc':   'Identificamos las oportunidades reales de IA en tu empresa, las priorizamos y ejecutamos con el menor riesgo posible.',
+    'svc.link':      'Conversemos →',
+    'proc.tag':      'Cómo trabajamos',
+    'proc.h2':       'De la idea al resultado',
+    'proc.sub':      'Un proceso claro, sin sorpresas, con objetivos medibles en cada etapa.',
+    'proc.p1.title': 'Diagnóstico',
+    'proc.p1.desc':  'Analizamos tu operación e identificamos dónde la IA genera el mayor impacto.',
+    'proc.p2.title': 'Diseño',
+    'proc.p2.desc':  'Construimos una propuesta a medida con objetivos y plazos claros.',
+    'proc.p3.title': 'Implementación',
+    'proc.p3.desc':  'Desarrollamos e integramos la solución en tu stack sin interrumpir la operación.',
+    'proc.p4.title': 'Optimización',
+    'proc.p4.desc':  'Monitoreamos y mejoramos el sistema continuamente junto a tu equipo.',
+    'why.tag':       'Por qué Gutix IA',
+    'why.h2a':       'IA real para',
+    'why.h2b':       'resultados reales',
+    'why.f1.title':  'Foco en resultados, no en tecnología',
+    'why.f1.desc':   'No usamos IA por moda. Cada implementación resuelve un problema concreto con métricas claras.',
+    'why.f2.title':  'Implementación sin fricción',
+    'why.f2.desc':   'Nos encargamos de todo el proceso. Tú defines el objetivo, nosotros lo hacemos realidad.',
+    'why.f3.title':  'Soporte continuo incluido',
+    'why.f3.desc':   'No desaparecemos al terminar. Monitoreamos y optimizamos cada sistema junto a tu equipo.',
+    'why.f4.title':  'Seguridad y privacidad de datos',
+    'why.f4.desc':   'Implementamos con buenas prácticas desde el inicio. Tus datos siempre protegidos.',
+    'faq.tag':       'Preguntas frecuentes',
+    'faq.h2':        '¿Tienes dudas?',
+    'faq.sub':       'Lo que más nos preguntan antes de empezar.',
+    'faq.q1':        '¿Necesito saber de tecnología o IA para trabajar con ustedes?',
+    'faq.a1':        'Para nada. Nos encargamos de toda la parte técnica. Tú solo necesitas tener claro el problema que quieres resolver en tu negocio.',
+    'faq.q2':        '¿Cuánto tiempo tarda una implementación?',
+    'faq.a2':        'Depende del alcance, pero la mayoría de proyectos iniciales van de 2 a 6 semanas. Después del diagnóstico inicial te damos un cronograma exacto.',
+    'faq.q3':        '¿Funciona para empresas pequeñas o solo para grandes corporaciones?',
+    'faq.a3':        'Trabajamos con empresas de todos los tamaños. Las pymes suelen ver el mayor impacto porque tienen más margen de mejora en sus procesos.',
+    'faq.q4':        '¿Qué pasa si ya tengo software o sistemas instalados?',
+    'faq.a4':        'Lo integramos. Analizamos tu stack actual y construimos sobre lo que ya tienes, sin necesidad de reemplazar todo desde cero.',
+    'faq.q5':        '¿Qué tan segura es mi información?',
+    'faq.a5':        'Implementamos con buenas prácticas de seguridad en cada proyecto. Tus datos y los de tus clientes se manejan con privacidad y responsabilidad total.',
+    'contact.tag':   'Contáctanos',
+    'contact.h2':    'Cuéntanos tu proyecto',
+    'contact.sub':   'Escríbenos y te respondemos en menos de 24 horas. Sin compromiso.',
+    'contact.f.name':    'Tu nombre',
+    'contact.f.company': 'Tu empresa',
+    'contact.f.email':   'tu@email.com',
+    'contact.f.msg':     '¿En qué podemos ayudarte?',
+    'contact.f.btn':     'Enviar mensaje →',
+    'contact.alt':   'O escríbenos directo a',
+    'footer.copy':   '© 2025 Gutix IA · Todos los derechos reservados',
+  },
+  en: {
+    'nav.services':  'Services',
+    'nav.process':   'Process',
+    'nav.faq':       'FAQ',
+    'nav.contact':   'Contact',
+    'nav.cta':       'Get started →',
+    'hero.badge':    'Artificial Intelligence Agency',
+    'hero.h1a':      'Your business, supercharged',
+    'hero.h1b':      'with AI that actually works.',
+    'hero.sub':      'We design, build and deploy AI solutions that generate real, measurable results for your business.',
+    'hero.cta1':     'Contact us →',
+    'hero.cta2':     'View services',
+    'nums.n1':       'Faster processes',
+    'nums.n2':       'Cost reduction',
+    'nums.n3':       'Systems that never sleep',
+    'svc.tag':       'What we do',
+    'svc.h2a':       'AI solutions',
+    'svc.h2b':       'tailored to your business',
+    'svc.sub':       "We don't sell generic software. Every solution is designed from scratch for your operation.",
+    'svc.s1.title':  'Custom AI systems',
+    'svc.s1.desc':   'From predictive models to autonomous agents, we build systems designed for your company\'s real challenges.',
+    'svc.s2.title':  'Process automation',
+    'svc.s2.desc':   'We identify the tasks consuming your time and automate them. Your team is freed up for what truly matters.',
+    'svc.s3.title':  'AI consulting',
+    'svc.s3.desc':   'We identify real AI opportunities in your business, prioritize them, and execute with minimal risk.',
+    'svc.link':      "Let\'s talk →",
+    'proc.tag':      'How we work',
+    'proc.h2':       'From idea to results',
+    'proc.sub':      'A clear process, no surprises, with measurable goals at every stage.',
+    'proc.p1.title': 'Discovery',
+    'proc.p1.desc':  'We analyze your operation and identify where AI generates the greatest impact.',
+    'proc.p2.title': 'Design',
+    'proc.p2.desc':  'We build a tailored proposal with clear objectives and timelines.',
+    'proc.p3.title': 'Implementation',
+    'proc.p3.desc':  'We develop and integrate the solution into your existing stack without disrupting operations.',
+    'proc.p4.title': 'Optimization',
+    'proc.p4.desc':  'We monitor and continuously improve the system alongside your team.',
+    'why.tag':       'Why Gutix IA',
+    'why.h2a':       'Real AI for',
+    'why.h2b':       'real results',
+    'why.f1.title':  'Results-focused, not tech-focused',
+    'why.f1.desc':   "We don\'t use AI for the hype. Every implementation solves a concrete problem with clear metrics.",
+    'why.f2.title':  'Frictionless implementation',
+    'why.f2.desc':   'We handle the entire process. You define the goal, we make it happen.',
+    'why.f3.title':  'Ongoing support included',
+    'why.f3.desc':   "We don\'t disappear after launch. We monitor and optimize every system alongside your team.",
+    'why.f4.title':  'Data security & privacy',
+    'why.f4.desc':   'We implement best security practices from day one. Your data, always protected.',
+    'faq.tag':       'Frequently asked questions',
+    'faq.h2':        'Have questions?',
+    'faq.sub':       'The things people ask us most before getting started.',
+    'faq.q1':        'Do I need to know about technology or AI to work with you?',
+    'faq.a1':        'Not at all. We handle all the technical side. You just need to be clear on the problem you want to solve in your business.',
+    'faq.q2':        'How long does an implementation take?',
+    'faq.a2':        'It depends on the scope, but most initial projects run from 2 to 6 weeks. After the initial discovery we give you an exact timeline.',
+    'faq.q3':        'Does it work for small businesses or only large corporations?',
+    'faq.a3':        'We work with companies of all sizes. SMEs often see the biggest impact because they have more room for process improvement.',
+    'faq.q4':        'What if I already have software or systems in place?',
+    'faq.a4':        'We integrate with them. We analyze your current stack and build on top of what you already have, no need to replace everything.',
+    'faq.q5':        'How secure is my information?',
+    'faq.a5':        'We implement security best practices in every project. Your data and your clients\' data is always handled with full privacy and responsibility.',
+    'contact.tag':   'Contact us',
+    'contact.h2':    'Tell us about your project',
+    'contact.sub':   'Write to us and we\'ll respond in less than 24 hours. No commitment.',
+    'contact.f.name':    'Your name',
+    'contact.f.company': 'Your company',
+    'contact.f.email':   'you@email.com',
+    'contact.f.msg':     'How can we help you?',
+    'contact.f.btn':     'Send message →',
+    'contact.alt':   'Or write to us directly at',
+    'footer.copy':   '© 2025 Gutix IA · All rights reserved',
+  }
+};
+
+let currentLang = localStorage.getItem('gutix-lang') || 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('gutix-lang', lang);
+  document.getElementById('root').lang = lang;
+
+  // Toggle active btn
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Translate all elements
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // Update page title
+  document.title = lang === 'en'
+    ? 'Gutix IA — Artificial Intelligence Agency'
+    : 'Gutix IA — Agencia de Inteligencia Artificial';
+}
+
+// Apply on load
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
 // ── FAQ ──
 function toggleFaq(btn){
   const item = btn.closest('.faq-item');
@@ -828,20 +1054,27 @@ function toggleFaq(btn){
 }
 
 // ── FORM ──
-function enviar(){
-  const n=document.getElementById('f-nombre').value.trim();
-  const e=document.getElementById('f-email').value.trim();
-  const m=document.getElementById('f-msg').value.trim();
-  const fb=document.getElementById('feedback');
-  if(!n||!e||!m){
-    fb.style.display='block'; fb.style.color='#FF6B6B';
-    fb.textContent='Por favor completa nombre, email y mensaje.'; return;
+function formSubmit(e) {
+  const nombre = e.target.nombre.value.trim();
+  const email  = e.target.email.value.trim();
+  const msg    = e.target.mensaje.value.trim();
+  const ok  = document.getElementById('form-ok');
+  const err = document.getElementById('form-err');
+  const btn = document.getElementById('form-btn');
+  ok.style.display = 'none';
+  err.style.display = 'none';
+  if (!nombre || !email || !msg) {
+    err.style.display = 'block'; e.preventDefault(); return;
   }
-  const sub=encodeURIComponent('Consulta desde gutixia.com — '+n);
-  const bod=encodeURIComponent('Nombre: '+n+'\nEmpresa: '+document.getElementById('f-empresa').value+'\nEmail: '+e+'\n\nMensaje:\n'+m);
-  window.location.href='mailto:hola@gutixia.com?subject='+sub+'&body='+bod;
-  fb.style.display='block'; fb.style.color='#6BDFB8';
-  fb.textContent='¡Listo! Se abrirá tu cliente de correo con el mensaje preparado.';
+  if (window.location.hostname === 'localhost' || window.location.protocol === 'file:') {
+    e.preventDefault();
+    btn.textContent = 'Enviado ✓';
+    btn.style.background = '#1a3acc';
+    btn.disabled = true;
+    ok.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { btn.textContent = 'Enviar mensaje →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+  }
 }
 </script>
 </body>
